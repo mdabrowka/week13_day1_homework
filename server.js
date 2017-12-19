@@ -3,6 +3,12 @@ const app = express();
 
 app.use(express.static('client/public'));
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(require('./controllers/index.js'));
+
+
 app.get('/', function (req, res) {
   res.sendFile('index.html');
 });
